@@ -1,5 +1,5 @@
 import dxl
-
+import whadup
 
 def init():
     ports = dxl.get_available_ports()
@@ -13,10 +13,6 @@ def init():
 
     print ("Connected to %s"%a[0])
 
-
-def get_angles(x,y):
-    th1, th2 = 45, 45
-    return th1, th2
 
 def get_xy():
     th1 = arm.read(3, "Present Position")
@@ -33,8 +29,8 @@ if __name__ == '__main__':
 
     while True:
         try:
-            x, y = get_xy()
-            th1, th2 = get_angles(x, y)
+            x, y = whadup.get(True)
+            th1, th2 = get_angles()
             string = str(x)+","+str(y)+","+str(th1)+","+str(th2)+"\n"
             fout.write(string)
             input()
